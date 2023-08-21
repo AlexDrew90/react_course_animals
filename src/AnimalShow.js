@@ -1,5 +1,37 @@
+import { useState } from 'react';
+import bird from './svg/bird.svg';
+import cat from './svg/cat.svg';
+import cow from './svg/cow.svg';
+import dog from './svg/dog.svg';
+import gator from './svg/gator.svg';
+import heart from './svg/heart.svg';
+import horse from './svg/horse.svg';
+
+const svgMap = {
+  bird,
+  cat,
+  cow,
+  dog,
+  gator,
+  horse
+};
+
 const AnimalShow = ({ type }) => {
-  return <div>{type}</div>
+
+  const [heartcount, setHeartcount] = useState(0);
+
+  const handleClick = () => {
+    setHeartcount(heartcount + 1);
+  };
+
+  return <div onClick={handleClick}>
+    <img alt="animal" src={svgMap[type]} />
+    <img
+    alt="heart"
+    src={heart}
+    style={{ width: 0 + 10 * heartcount + "px"}}
+    />
+  </div>
 }
 
 export default AnimalShow;
